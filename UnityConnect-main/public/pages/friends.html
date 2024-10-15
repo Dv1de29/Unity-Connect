@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/general.css">
+    <link rel="stylesheet" href="../css/friends.css">
+    <script defer src="../js/friends.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+<body>
+    <div class="options">
+        <div class="options-up">
+            <div id="logo">
+                <img src="../resources/logo_simplu.png" alt="">
+                <div class="app-name">
+                    <span id="unity">
+                        Unity
+                    </span>
+                    <span>
+                        Connect
+                    </span>
+                </div>
+            </div>
+            <div id="discovery">
+                <ion-icon class="menu-icons" name="earth-outline"></ion-icon>
+                <span>Discovery</span>
+            </div>
+            <div id="my-events">
+                <ion-icon class="menu-icons" name="calendar-outline"></ion-icon>
+                <span>My Events</span>
+            </div>
+            <div id="friends">
+                <ion-icon class="menu-icons" name="people-outline"></ion-icon>
+                <span>Friends</span>
+            </div>
+            <div id="favorite">
+                <ion-icon class="menu-icons" name="heart-circle-outline"></ion-icon>
+                <span>Favorite</span>
+            </div>
+            </div>
+        <div class="options-down">
+                <div class="account" id="openModalBtn">
+                    <img src="../resources/logo_simplu.png" alt="">
+                    <span id="name"> NAME</span>
+                </div>
+            <div class="modal" id="myModal">            
+                <div id = "WelcomeProfil"> 
+                    Hello Name!
+                </div>
+                <div id = "profil-notificare">
+                    <div id = "profile" onclick = "location.href='./profile.html' " >
+                        Profile
+                    </div>
+                    
+                    <ion-icon id="bell-not" name="notifications-outline" [style.font-size]="'45px'"></ion-icon>
+                </div>
+                <div id = "pentru-buton">
+                    <button id = "logout" onclick="logout()">Logout</button>
+                    <ion-icon name="log-out-outline" id = "logout-icon"> </ion-icon>
+                </div>
+
+            </div>	
+            
+        </div>
+        <script>
+            var openModalBtn = document.querySelector('#openModalBtn');
+            var modal = document.getElementById('myModal');
+
+            openModalBtn.addEventListener('click', function(event) {
+                var rect = openModalBtn.getBoundingClientRect();
+                var buttonX = rect.left;
+                var buttonY = rect.bottom;
+
+                var modalWidth = 170; // Adjust as needed
+                var modalHeight = 300; // Adjust as needed
+
+                modal.style.left = '120px';
+                modal.style.top = '0px';
+                modal.style.width = modalWidth + 'px';
+                modal.style.height = modalHeight + 'px';
+
+                modal.style.display = 'block';
+                openModalBtn.style.opacity = 0;
+                document.addEventListener('click', closeOnOutsideClick);
+            });
+
+            function closeOnOutsideClick(event) {
+                if (!modal.contains(event.target) && event.target !== openModalBtn) {
+                    modal.style.display = 'none';
+                    openModalBtn.style.opacity = 1;
+                }
+            }
+
+            function logout() {
+                location.href = "../pages/login.html"
+            }
+
+            
+        </script>
+    </div>
+    <div class="content">
+        <div class="bara-sus">
+            <div>
+                <ion-icon class="icon" name="accessibility-outline"></ion-icon>           
+            <span class="sp">Friends </span>
+            </div>
+            <div class="has"><span class="sp">Online </span></div>
+            <div class="has"><span class="sp">All</span> </span></div>
+            <div class="has"><span class="sp">Pending </span></div>
+           <div class="rest">
+            <div class="Add-friends">Add Friends </div>
+           </div>
+            
+        </div>
+        <div class="topnav">
+            <input type="text" placeholder="Search..">
+            <img id="ic" src="../resources/search.png" alt="">
+        </div>
+        <div class="divul_suprem">
+        <div class="lista">
+            <div class="ceva-num">
+            <img class="ceva" src="" alt="">
+            <span class="num">Nume</span>
+        </div>
+        <div class="buttoane">
+            <button>
+            <ion-icon class="comm" name="chatbox-outline"></ion-icon>
+        </button>
+            <button>
+                <ion-icon class="ban" name="ban-outline"></ion-icon>
+            </button>
+        </div>
+        </div>
+    </div>
+    </div>
+    <template class="preten">
+        <div class="lista">
+            <div class="ceva-num">
+            <img class="ceva" src="" alt="">
+            <span class="num">Nume</span>
+        </div>
+        <div class="buttoane">
+            <button>
+            <ion-icon class="comm" name="chatbox-outline"></ion-icon>
+        </button>
+            <button>
+                <ion-icon class="ban" name="ban-outline"></ion-icon>
+            </button>
+        </div>
+    </template>
+</body>
+
+</html>
+

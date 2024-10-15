@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <link rel="stylesheet" href="../css/CreareEveniment.css">
+    <script defer src="../js/general.js"></script>
+    <script defer src="../js/CreareEveniment.js"></script>
+    <title>UnityConnect - View event</title>
+</head>
+<body>
+    <div id = "Titlu">
+        <input type="text" class="title" value="New Event">
+    </div>
+
+    <div class="box" id = "content">
+        <div id = "informatii">
+            <div id = "USER">
+                <div class="user-details">
+                    <div class="input-box">
+                        <span class="details">Creator:</span>
+                        <input class="creator" type="text" placeholder="Loading..." required disabled>
+                    </div>
+
+                    <div class="input-box">
+                        <span class="details">Select Date:</span>
+                        <input class="date" type="date" id="datepicker" name="date">
+                    </div>
+
+                    <div class="input-box">
+                        <span class="details">Select time:</span>
+                        <input class="time" type="time" id="timepicker" name="time" >
+                    </div>
+                    
+                </div>
+
+                <div class="user-details">
+                    <div class="input-box">
+                        <span class="details">Language:</span>
+                        <input class="language" type="text" placeholder="Select your language" required>
+                    </div>
+
+                    <div class="input-box">
+                        <span class="details"> Location: </span>
+                        <input class="location" type="text" placeholder="Select location" required>
+                    </div>
+
+                    <!-- <div class="input-box">
+                        <span class="details">Time:</span>
+                        <input type="text" placeholder="select hour" required>
+                    </div> -->
+
+                    <div class="input-color">
+                        <span class="details"> Event color: </span>
+                        <input class="color" type="color" default="white" id="colorPicker" name="colorPicker">
+                    </div>
+                </div>
+            </div>
+                
+            </div>
+        </div>
+
+        <br>
+
+        <div class="box" id = "Description">
+            <span class="details">Description:</span>
+            <textarea class="description" rows="5" maxlength="800" id ="casuta-pentru-descriere" placeholder="Write a description about your event" required></textarea>
+        </div>
+
+        <div class="box" id = "participanti">
+            <span>Participants:</span>
+        </div>
+
+        <div class="join-now">
+            <a href="#" class="join-now-button">Join Now</a>
+        </div>
+        <div class="back">
+            <a href="#" class="back-button" onclick="location.href = '../pages/home.html'">BACK</a>
+        </div>
+
+    </div>
+</body>
+</html>
+
+<template>
+    <div class="account" id="openModalBtn">
+        <img src="../resources/logo_simplu.png" alt="">
+        <span id="name"> NAME</span>
+    </div>
+</template>

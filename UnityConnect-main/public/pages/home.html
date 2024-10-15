@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <link rel="stylesheet" href="../css/general.css">
+    <link rel="stylesheet" href="../css/home.css">
+    <script defer src="../js/general.js"></script>
+    <script defer src="../js/home.js"></script>
+    <title>UnityConnect - Home</title>
+    
+</head>
+<body>
+    <div class="options">
+        <div class="options-up">
+            <div id="logo">
+                <img src="../resources/logo_simplu.png" alt="">
+                <div class="app-name">
+                    <span id="unity">
+                        Unity
+                    </span>
+                    <span>
+                        Connect
+                    </span>
+                </div>
+            </div>
+            <div id="discovery">
+                <ion-icon class="menu-icons" name="earth-outline"></ion-icon>
+                <span>Discovery</span>
+            </div>
+            <div id="my-events">
+                <ion-icon class="menu-icons" name="calendar-outline"></ion-icon>
+                <span>My Events</span>
+            </div>
+            <div id="friends">
+                <ion-icon class="menu-icons" name="people-outline"></ion-icon>
+                <span>Friends</span>
+            </div>
+            <div id="favorite">
+                <ion-icon class="menu-icons" name="heart-circle-outline"></ion-icon>
+                <span>Favorite</span>
+            </div>
+            </div>
+        <div class="options-down">
+                <div class="account" id="openModalBtn">
+                    <img src="../resources/logo_simplu.png" alt="">
+                    <span id="name"> NAME</span>
+                </div>
+            <div class="modal" id="myModal">            
+                <div id = "WelcomeProfil"> 
+                    Hello Name!
+                </div>
+                <div id = "profil-notificare">
+                    <div id = "profile" onclick = "location.href='./profile.html' " >
+                        Profile
+                    </div>
+                    
+                    <ion-icon id="bell-not" name="notifications-outline" [style.font-size]="'45px'"></ion-icon>
+                </div>
+                <div id = "pentru-buton">
+                    <button id = "logout" onclick="signOut()">Logout</button>
+                    <ion-icon name="log-out-outline" id = "logout-icon"> </ion-icon>
+                </div>
+            </div>	
+            
+        </div>
+        <script>
+            var openModalBtn = document.querySelector('#openModalBtn');
+            var modal = document.getElementById('myModal');
+
+            openModalBtn.addEventListener('click', function(event) {
+                var rect = openModalBtn.getBoundingClientRect();
+                var buttonX = rect.left;
+                var buttonY = rect.bottom;
+
+                var modalWidth = 170; // Adjust as needed
+                var modalHeight = 300; // Adjust as needed
+
+                modal.style.left = '120px';
+                modal.style.top = '0px';
+                modal.style.width = modalWidth + 'px';
+                modal.style.height = modalHeight + 'px';
+
+                modal.style.display = 'block';
+                openModalBtn.style.opacity = 0;
+                document.addEventListener('click', closeOnOutsideClick);
+            });
+
+            function closeOnOutsideClick(event) {
+                if (!modal.contains(event.target) && event.target !== openModalBtn) {
+                    modal.style.display = 'none';
+                    openModalBtn.style.opacity = 1;
+                }
+            }
+
+            function logout() {
+                location.href = "../pages/login.html"
+            }
+
+            
+        </script>
+    </div>
+    <div class="content">
+        <div class="aur">
+            <div class="welcome-notify">
+                <span id="welcome">Welcome to APP, NAME!</span>
+            </div>
+        </div>
+
+        <span id="discover">Discover and Book Events</span>
+
+
+        <div class="ev-selection">
+            <div class="events" id="ev-rec">
+                <span class="title">Enjoy</span>
+                <span class="cont">Recommended for you</span>
+            </div>
+            <div class="events" id="ev-fav-creators"><span class="title">Exciting</span>
+                <span class="cont">From your favourites</span>
+            </div>
+            <div class="events" id="ev-year"><span class="title">Waiting for you</span>
+                <span class="cont">Upcoming Events</span>
+            </div>
+        </div>
+        <div class="popular-creators">
+            <span id="pop-text">Your Favorite Creators</span>
+            <div class="your-creator">
+                
+            </div>
+        </div>
+    </div>
+    <div class="events-load">
+        <span id="title">RECOMMENDED FOR YOU</span>
+        <div class="event-cont">
+            <div class="chenar_timp_desc">
+                <div class="date_time" onmouseover="hoverEffon(this)" onmouseleave="hoverEffoff(this)">
+                  <button class="join">Join</button>
+                  <div class="date">
+                    <h2>Today</h2>
+                  </div>
+                  <div class="time">
+                    <h1>17:00</h1>
+                  </div>
+                </div>
+                <div class="descriere" onclick="openEvent()">
+                  <div class="d2">
+                      <span class="text">Lorem ipsum</span>
+                  </div>
+                  <div class="desc">
+                      <p class="text2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis quidem laboriosam delectus dolor laborum officia consequatur illo cumque dignissimos sint, excepturi, consequuntur labore blanditiis voluptate! Deleniti quos expedita quibusdam adipisci.</p>
+                  </div>
+                  <div class="add-fav">
+                      <ion-icon name="star"></ion-icon>
+                  </div>
+                </div>
+              </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<template id="ev">
+    <div class="chenar_timp_desc">
+      <div class="date_time" onmouseover="hoverEffon(this)" onmouseleave="hoverEffoff(this)">
+        <button class="join">Join</button>
+        <div class="date">
+          <h2>Today</h2>
+        </div>
+        <div class="time">
+          <h1>17:00</h1>
+        </div>
+      </div>
+      <div class="descriere" onclick="openEvent()">
+        <div class="d2">
+            <span class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</span>
+        </div>
+        <div class="desc">
+            <p class="text2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis quidem laboriosam delectus dolor laborum officia consequatur illo cumque dignissimos sint, excepturi, consequuntur labore blanditiis voluptate! Deleniti quos expedita quibusdam adipisci.</p>
+        </div>
+        <div class="add-fav">
+            <ion-icon name="star"></ion-icon>
+        </div>
+      </div>
+    </div>
+  </template>
+
+<template id="popular-creater-temp">
+    <div class="cnt">
+        <div class="photo">
+            <img src="" alt="">
+        </div>
+        <div class="rest">
+            <div class="info">
+                <div class="name">
+                    <span id="name">NUME</span>
+                </div>
+                <div class="origin-country">
+                    <span>TARA DE ORIGINE</span>
+                </div>
+        </div>
+        <img id="country-photo" src="../resources/logo_simplu.png" alt="">
+    </div>
+</template>
